@@ -367,22 +367,22 @@ public class InterfazInmobiliaria {
 			actual.ordenarCasasPorPrecio();
 			System.out.println(actual.mostrarPropiedadesCasas());
 			break;
-		case 2:
-			actual.ordenarDeptosPorPrecio();
-			System.out.println(actual.mostrarPropiedadesDeptos());
-			break;
-		case 3:
-			actual.ordenarPHPorPrecio();
-			System.out.println(actual.mostrarPropiedadesPH());
-			break;
-		case 4:
-			actual.ordenarTerrenosPorPrecio();
-			System.out.println(actual.mostrarPropiedadesTerrenos());
-			break;
-		case 5:
-			actual.ordenarCamposPorPrecio();
-			System.out.println(actual.mostrarPropiedadesCampos());
-			break;
+//		case 2:
+//			actual.ordenarDeptosPorPrecio();
+//			System.out.println(actual.mostrarPropiedadesDeptos());
+//			break;
+//		case 3:
+//			actual.ordenarPHPorPrecio();
+//			System.out.println(actual.mostrarPropiedadesPH());
+//			break;
+//		case 4:
+//			actual.ordenarTerrenosPorPrecio();
+//			System.out.println(actual.mostrarPropiedadesTerrenos());
+//			break;
+//		case 5:
+//			actual.ordenarCamposPorPrecio();
+//			System.out.println(actual.mostrarPropiedadesCampos());
+//			break;
 		}
 		
 		
@@ -399,8 +399,8 @@ public class InterfazInmobiliaria {
 		
 		switch(opcion) {
 		case 1: 
-			actual.ordenarCasasPorUbicacion();
-			System.out.println(actual.mostrarPropiedadesCasas());
+//			actual.ordenarCasasPorUbicacion();
+//			System.out.println(actual.mostrarPropiedadesCasas());
 		}
 	}
 	private static void buscarPorRangoDePrecios(Scanner teclado) {

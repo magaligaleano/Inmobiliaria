@@ -2,6 +2,8 @@ package ar.edu.unlam.pb1;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class PruebaUnitariaAutomatizada {
@@ -176,11 +178,11 @@ public class PruebaUnitariaAutomatizada {
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
 		actual.agregarCasa(casa3);
-		Casa casasEncontradas[] = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
+		ArrayList <Casa> casasEncontradas = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
 		
 		assertNotNull(casasEncontradas);
 	}
-	//punto j
+	//punto j, 
 	@Test
 	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNuloSiNoAplicanResultados() {
 		//Preparacion de datos
@@ -195,7 +197,7 @@ public class PruebaUnitariaAutomatizada {
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
 		actual.agregarCasa(casa3);
-		Casa casasEncontradas[] = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
+		ArrayList <Casa> casasEncontradas = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
 		//Validacion
 		assertNull(casasEncontradas);
 	}
