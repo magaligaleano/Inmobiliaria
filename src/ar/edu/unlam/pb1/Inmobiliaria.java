@@ -112,9 +112,8 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesCasas() {
 		String resultado = "";
 		for(int i=0;i < casas.size(); i++) {
-			if(casas.get(i) != null) {
 				resultado += casas.get(i) + "\n";
-			}
+			
 		}
 		return resultado;
 	}
@@ -132,27 +131,24 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesPH() {
 		String resultado = "";
 		for(int i=0;i < phs.size(); i++) {
-			if(phs.get(i) != null) {
 				resultado += phs.get(i) + "\n";
-			}
+			
 		}
 		return resultado;
 	}
 	public String mostrarPropiedadesTerrenos() {
 		String resultado = "";
 		for(int i=0;i < terrenos.size(); i++) {
-			if(terrenos.get(i) != null) {
 				resultado += terrenos.get(i) + "\n";
-			}
+			
 		}
 		return resultado;
 	}
 	public String mostrarPropiedadesCampos() {
 		String resultado = "";
 		for(int i=0;i < campos.size(); i++) {
-			if(campos.get(i) != null) {
 				resultado += campos.get(i) + "\n";
-			}
+			
 		}
 		return resultado;
 	}
@@ -289,7 +285,6 @@ public class Inmobiliaria {
 	}
 	public ArrayList<Casa> rangoPrecioCasasArray(Double precioMinimo, Double precioMaximo) {
 		ArrayList <Casa> casasEncontradas = null;
-		Integer cantidadDeCasas = 0;
 		for(int i=0;i < casas.size(); i++) {
 			if(casas.get(i).getPrecio()>=precioMinimo && casas.get(i).getPrecio()<=precioMaximo) { 
 				casasEncontradas = new ArrayList<>();
@@ -352,7 +347,7 @@ public class Inmobiliaria {
 	public String ubicacionDeptos(String ubicacion) {
 		String resultado = "";
 		for(int i=0;i < departamentos.size(); i++) {
-			if(departamentos.get(i) != null && departamentos.get(i).getCiudad().equals(ubicacion)) {
+			if(departamentos.get(i).getCiudad().equals(ubicacion)) {
 				resultado += departamentos.get(i) + "\n";
 			}
 		}
