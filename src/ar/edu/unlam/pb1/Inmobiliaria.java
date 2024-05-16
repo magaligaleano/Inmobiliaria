@@ -14,8 +14,8 @@ public class Inmobiliaria {
 	private ArrayList <Terreno> terrenos;
 	private ArrayList <Campo> campos;
 	private ArrayList <PH> phs;
-	private final Integer CANTIDAD_MAXIMA_DE_PROPIEDADES_POR_TIPO = 100;
-	private final Integer CANTIDAD_MAXIMA_DE_CLIENTES = 400;
+	private ArrayList <Venta>ventas;
+	private ArrayList <Alquiler> alquileres;
 	
 	
 	public Inmobiliaria(String nombre, String direccion, String eMail, Integer telefono) {
@@ -29,6 +29,8 @@ public class Inmobiliaria {
 		this.terrenos = new ArrayList<>();
 		this.clientes = new ArrayList<>();
 		this.campos = new ArrayList<>();
+		this.ventas = new ArrayList<>();
+		this.alquileres = new ArrayList<>();
 	}
 	
 	public Boolean agregarCasa(Casa nueva) { 
@@ -65,7 +67,7 @@ public class Inmobiliaria {
 		return false;
 		}
 		
-	public boolean agregarCliente(Cliente nuevo) {
+	public Boolean agregarCliente(Cliente nuevo) {
 		for(Cliente cliente : clientes) {
 			if(cliente.getDni().equals(nuevo.getDni())) {
 				return false;
@@ -73,6 +75,30 @@ public class Inmobiliaria {
 		}
 		return clientes.add(nuevo);
 			
+	}
+	
+	public Boolean agregarVenta(Venta nueva) {
+		return ventas.add(nueva);
+	}
+	public Boolean agregarAlquiler(Alquiler nuevo) {
+		return alquileres.add(nuevo);
+	}
+	public Boolean isVenta(Propiedad propiedad, Cliente cliente) {
+		if(propiedad.estaDisponibleParaVenta()) {
+			propiedad.setEstaDisponible(false);
+			propiedad.setNombrePropietario(cliente.getNombre());
+			return true;
+		}
+		
+		 return false;
+	}
+	public Boolean isAlquiler(Propiedad propiedad, Cliente cliente) {
+		if(propiedad.estaDisponibleParaAlquiler()) {
+			propiedad.setEstaDisponible(false);
+			propiedad.setNombreInquilino(cliente.getNombre());
+			return true;
+		}
+		return false;
 	}
 			
 	public String getNombre() {
@@ -112,7 +138,7 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesCasas() {
 		String resultado = "";
 		for(int i=0;i < casas.size(); i++) {
-				resultado += casas.get(i) + "\n";
+				resultado += casas.get(i).toString() + "\n";
 			
 		}
 		return resultado;
@@ -122,7 +148,7 @@ public class Inmobiliaria {
 		String resultado = "";
 		for(int i=0;i < departamentos.size(); i++) {
 			if(departamentos.get(i) != null) {
-				resultado += departamentos.get(i) + "\n";
+				resultado += departamentos.get(i).toString() + "\n";
 			}
 		}
 		return resultado;
@@ -131,7 +157,7 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesPH() {
 		String resultado = "";
 		for(int i=0;i < phs.size(); i++) {
-				resultado += phs.get(i) + "\n";
+				resultado += phs.get(i).toString() + "\n";
 			
 		}
 		return resultado;
@@ -139,7 +165,7 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesTerrenos() {
 		String resultado = "";
 		for(int i=0;i < terrenos.size(); i++) {
-				resultado += terrenos.get(i) + "\n";
+				resultado += terrenos.get(i).toString() + "\n";
 			
 		}
 		return resultado;
@@ -147,7 +173,7 @@ public class Inmobiliaria {
 	public String mostrarPropiedadesCampos() {
 		String resultado = "";
 		for(int i=0;i < campos.size(); i++) {
-				resultado += campos.get(i) + "\n";
+				resultado += campos.get(i).toString() + "\n";
 			
 		}
 		return resultado;
@@ -155,50 +181,96 @@ public class Inmobiliaria {
 	
 	//Buscar y modificar propiedades
 	
-	public Boolean buscarCodigoCasa(String codigo) {
-		for(Casa casa : casas) {
+	public Casa buscarCodigoCasa(String codigo) {
+		Casa casaAbuscar = null
+;		for(Casa casa : casas) {
 			if(casa.getCodigo().equals(codigo)) {
-				return true;
+				casaAbuscar = casa;
+				return casaAbuscar;
 			}
 		}
-		return false;
+		return null;
 	}
 	public Boolean modificarCasa(String codigo, Casa actualizada) {
 		for(int i=0;i<casas.size();i++) {
 			if(casas.get(i).getCodigo().equals(codigo)) {
-				return casas.add(actualizada);
+			   casas.set(i, actualizada);
+			   return true;
 			}
 		}
 		return false;
 	}
-	public Boolean buscarCodigoDepto(String codigo) {
+	public Departamento buscarCodigoDepto(String codigo) {
+		Departamento buscado = null;
 		for(Departamento depto: departamentos) {
 			if(depto.getCodigo().equals(codigo)) {
-				return true;
+				buscado = depto;
 			}
 		}
-		return false;
+		return buscado;
 	}
 	public Boolean modificarDepto(String codigo, Departamento actualizado) {
 		for(int i=0;i<departamentos.size();i++) {
 			if(departamentos.get(i).getCodigo().equals(codigo)) {
-				return departamentos.add(actualizado);
-			}
-		}
-		return false;
-	}
-	public Boolean buscarCodigoPH(String codigo) {
-		for(PH ph: phs) {
-			if(ph.getCodigo().equals(codigo)) {
+				departamentos.set(i, actualizado);
 				return true;
 			}
 		}
 		return false;
 	}
+	public PH buscarCodigoPH(String codigo) {
+		PH buscado = null;
+		for(PH ph: phs) {
+			if(ph.getCodigo().equals(codigo)) {
+				buscado = ph;
+			}
+		}
+		return buscado;
+	}
 	public Boolean modificarPH(String codigo, PH actualizado) {
 		for(int i=0;i<phs.size();i++) {
 			if(phs.get(i).equals(codigo)) {
-				return phs.add(actualizado);
+			   phs.set(i, actualizado);
+			   return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	public Campo buscarCodigoCampo(String codigo) {
+		Campo buscado = null;
+		for(Campo campo: campos) {
+			if(campo.getCodigo().equals(codigo)) {
+				buscado = campo;
+			}
+		}
+		return buscado;
+	}
+	public Boolean modificarCampo(String codigo, Campo actualizado) {
+		for(int i=0;i<campos.size();i++) {
+			if(campos.get(i).getCodigo().equals(codigo)) {
+				campos.set(i, actualizado);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Terreno buscarCodigoTerreno(String codigo) {
+		Terreno buscado = null;
+		for(Terreno terreno : terrenos) {
+			if(terreno.getCodigo().equals(codigo)) {
+				buscado = terreno;
+			}
+		}
+		return buscado;
+	}
+	public Boolean modificarTerreno(String codigo, Terreno actualizado) {
+		for(int i=0;i<terrenos.size();i++) {
+			if(terrenos.get(i).getCodigo().equals(codigo)) {
+				 terrenos.set(i, actualizado);
+				 return true;
 			}
 		}
 		return false;
@@ -285,10 +357,18 @@ public class Inmobiliaria {
 	}
 	public ArrayList<Casa> rangoPrecioCasasArray(Double precioMinimo, Double precioMaximo) {
 		ArrayList <Casa> casasEncontradas = null;
+		Integer contador = 0;
 		for(int i=0;i < casas.size(); i++) {
 			if(casas.get(i).getPrecio()>=precioMinimo && casas.get(i).getPrecio()<=precioMaximo) { 
-				casasEncontradas = new ArrayList<>();
-				casasEncontradas.add(casas.get(i));
+				contador++;
+			}
+		}
+		if(contador>0) {
+			casasEncontradas = new ArrayList<>();
+			for(int i=0;i < casas.size(); i++) {
+				if(casas.get(i).getPrecio()>=precioMinimo && casas.get(i).getPrecio()<=precioMaximo) { 
+					casasEncontradas.add(casas.get(i));
+				}
 			}
 		}
 	   return casasEncontradas;
@@ -438,4 +518,100 @@ public class Inmobiliaria {
 		}
 		return true;
 	}
+	public Cliente buscarCliente(Integer dni) {
+		Cliente clienteABuscar = null;
+		for(Cliente cliente : clientes) {
+			if(cliente.getDni().equals(dni)){
+				clienteABuscar = cliente;
+				return clienteABuscar;
+			}
+		}
+		return null;
+	}
+	
+	public ArrayList<Venta> mostrarVentas(){
+		ArrayList<Venta> propiedadesVendidas = null;
+		Integer contador = 0;
+		for(Venta venta : ventas) {
+			if(venta.getPropiedad()!=null) {
+				contador++;
+			}	
+		}
+		if(contador>0) {
+			propiedadesVendidas = new ArrayList<>();
+			for(Venta venta : ventas) {
+				propiedadesVendidas.add(venta);
+			}
+		}
+		return propiedadesVendidas;
+	}
+	
+	public ArrayList<Alquiler> mostrarAlquileres(){
+		ArrayList<Alquiler> propiedadesAlquiladas = null;
+		Integer contador = 0;
+		for(Alquiler alquiler : alquileres) {
+			if(alquiler.getPropiedad()!=null) {
+				contador++;
+			}	
+		}
+		if(contador>0) {
+			propiedadesAlquiladas = new ArrayList<>();
+			for(Alquiler alquiler : alquileres) {
+				propiedadesAlquiladas.add(alquiler);
+			}
+		}
+		return propiedadesAlquiladas;
+	}
+//	 public ArrayList<Casa> mostrarVentasCasas(){
+//		 ArrayList<Casa> casasVendidas = null;
+//		 Integer contadorCasa = 0;
+//		 for(Casa casa: casas) {
+//			 if(casa.fueVendida()) {
+//				 contadorCasa++;
+//			 }
+//		 }
+//		 if(contadorCasa>0) {
+//			 casasVendidas = new ArrayList<>();
+//			 for(Casa casa: casas) {
+//				 if(casa.fueVendida()) {
+//					 casasVendidas.add(casa);
+//				 }
+//			 }
+//		 }
+//		 return casasVendidas;
+//	 }
+//	 
+//	
+//	public String mostrarVentasCasas() {
+//		String resultado = "";
+//		for(Casa casa: casas) {
+//			if(casa.fueVendida()) {
+//				resultado+=casa.toString()+" ";
+//				}
+//			for(Cliente cliente: clientes) {
+//				if(cliente.getNombre().equals(casa.getNombrePropietario())) {
+//					resultado+=cliente.toString()+ "\n";
+//				}
+//			}
+//			}
+//			
+//		
+//		return resultado;
+//	}
+//	public String mostrarAlquilerCasas() {
+//		String resultado = "";
+//		for(Casa casa: casas) {
+//			if(casa.fueAlquilada()) {
+//				resultado+=casa.toString()+" ";
+//				}
+//			for(Cliente cliente: clientes) {
+//				if(cliente.getNombre().equals(casa.getNombreInquilino())) {
+//					resultado+=cliente.toString()+ "\n";
+//				}
+//			}
+//			}
+//			
+//		
+//		return resultado;
+//	}
 }

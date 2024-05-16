@@ -8,8 +8,8 @@ public class PH extends Propiedad{
 	private String codigo;
     
 	public PH(Integer nroUnidad, Integer piso, Integer cantidadDeAmbientes, Double precio, String ciudad,
-			 Boolean estaDisponible, TipoDeOperacion tipo) {
-		super(null, null, ciudad, precio, estaDisponible, tipo);
+			 Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
+		super(null, null, ciudad, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 		this.nroUnidad = nroUnidad;
 		this.piso = piso;
 		this.cantidadDeAmbientes = cantidadDeAmbientes;

@@ -9,8 +9,8 @@ public class Campo extends Propiedad{
 	
     
 	public Campo(String nombre, Double superficie, String ubicacion, Double precio,
-			Boolean estaDisponible, TipoDeOperacion tipo) {
-		super(nombre, 0, ubicacion, precio, estaDisponible, tipo);
+			Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
+		super(nombre, 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 		this.nombre = nombre;
 		this.superficie = superficie;
 		this.codigo = "CAM"+contador++;

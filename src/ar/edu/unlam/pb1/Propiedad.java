@@ -7,15 +7,19 @@ public class Propiedad {
 	private Double precio;
     private Boolean estaDisponible;
     private TipoDeOperacion tipo;
+    private String nombrePropietario;
+    private String nombreInquilino;
     
     public Propiedad(String calle, Integer numero, String ciudad, Double precio, Boolean estaDisponible,
-			TipoDeOperacion tipo) {
+			TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
 		this.calle = calle;
 		this.numero = numero;
 		this.ciudad = ciudad;
 		this.precio = precio;
 		this.estaDisponible = estaDisponible;
 		this.tipo = tipo;
+		this.nombrePropietario = nombrePropietario;
+		this.nombreInquilino = nombreInquilino;
 	}
 
 	public String getCalle() {
@@ -66,17 +70,47 @@ public class Propiedad {
 		this.tipo = tipo;
 	}
     
-	public boolean estaDisponibleParaVenta() {
+	public String getNombrePropietario() {
+		return nombrePropietario;
+	}
+
+	public void setNombrePropietario(String nombrePropietario) {
+		this.nombrePropietario = nombrePropietario;
+	}
+
+	public String getNombreInquilino() {
+		return nombreInquilino;
+	}
+
+	public void setNombreInquilino(String nombreInquilino) {
+		this.nombreInquilino = nombreInquilino;
+	}
+
+	public Boolean estaDisponibleParaVenta() {
     	if(estaDisponible && tipo == TipoDeOperacion.VENTA) {
     		return true;
     	}
     	return false;
     }
-    public boolean estaDisponibleParaAlquiler() {
+    public Boolean estaDisponibleParaAlquiler() {
     	if(estaDisponible && tipo == TipoDeOperacion.ALQUILER) {
     		return true;
     	}
     	return false;
+    }
+    public Boolean fueVendida() {
+    	if(estaDisponible==false && tipo == TipoDeOperacion.VENTA) {
+    		return true;
+    	}else {
+    		return false;
+    	}
+    }
+    public Boolean fueAlquilada() {
+    	if(estaDisponible==false && tipo == TipoDeOperacion.ALQUILER) {
+    		return true;
+    	}else {
+    		return false;
+    	}
     }
 
 	@Override

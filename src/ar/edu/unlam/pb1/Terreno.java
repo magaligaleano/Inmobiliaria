@@ -8,8 +8,8 @@ public class Terreno extends Propiedad {
    private String codigo;
    
 public Terreno(Double ancho, Double largo, Double superficie, String ubicacion, Double precio,
-		Boolean estaDisponible, TipoDeOperacion tipo) {
-	super(null, 0, ubicacion, precio, estaDisponible, tipo);
+		Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
+	super(null, 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 	this.ancho = ancho;
 	this.largo = largo;
 	this.superficie = superficie;

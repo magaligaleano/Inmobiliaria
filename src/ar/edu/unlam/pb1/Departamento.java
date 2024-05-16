@@ -9,8 +9,8 @@ public class Departamento extends Propiedad {
 	private static Integer contador = 1;
 	
 	public Departamento(String calle, Integer piso, Integer nroDepto, String ciudad, Boolean estaDisponible,
-			Double precio, TipoDeOperacion tipo) {
-		super(ciudad, nroDepto, ciudad, precio, estaDisponible, tipo);
+			Double precio, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
+		super(ciudad, nroDepto, ciudad, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 		this.piso = piso;
 		this.codigo = "DEPTO"+contador++;
 	}
@@ -32,8 +32,8 @@ public class Departamento extends Propiedad {
 	
 	@Override
 	public String toString() {
-		return "Departamento [calle=" + super.getCalle() + ", piso=" + piso + ", nroDepto=" + super.getNumero() + ", codigo=" + codigo
-				+ ", ciudad=" + super.getCiudad() + "]";
+		return "Departamento [calle=" + getCalle() + ", piso=" + piso + ", nroDepto=" + getNumero() + ", codigo=" + codigo
+				+ ", ciudad=" + getCiudad() + "]";
 	}
 	
 	

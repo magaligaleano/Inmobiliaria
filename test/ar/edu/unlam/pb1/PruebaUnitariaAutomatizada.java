@@ -12,9 +12,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSiTengoTresCasasDeCincuentaCienYSesentaMilElPrecioPromedioSeaSetenta() {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
         //Ejecucion
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
@@ -40,7 +40,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
+		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
 		Boolean resultadoEsperado = true;
 		//Ejecucion
 		Boolean resultadoObtenido = actual.agregarCasa(casa);
@@ -53,8 +53,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaDosCasaEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
 		Boolean resultadoEsperado = true;
 		//Ejecucion
 		Boolean resultadoObtenido1 = actual.agregarCasa(casa1);
@@ -68,8 +68,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queNoSePuedanDarDeAltaDosCasasConUnaMismaDireccion  () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Gaona",500, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Haedo", 100000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Gaona",500, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Haedo", 100000.0, true, TipoDeOperacion.VENTA, null, null);
 		//Ejecucion
 	    actual.agregarCasa(casa1);
 		Boolean resultadoObtenido = actual.agregarCasa(casa2);
@@ -81,7 +81,7 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA);
+		Departamento depto = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
 		//Ejecucion
 		Boolean resultadoObtenido = actual.agregarDepartamento(depto);
 		//Validacion
@@ -92,8 +92,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA);
-		Departamento depto2 = new Departamento("Gaona",1, 5, "Ramos", true, 50000.0, TipoDeOperacion.VENTA);
+		Departamento depto1 = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto2 = new Departamento("Gaona",1, 5, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null, null);
         //Ejecucion
 		Boolean resultadoObtenido = actual.agregarDepartamento(depto1);
 		Boolean resultadoObtenido2 = actual.agregarDepartamento(depto2);
@@ -106,8 +106,8 @@ public class PruebaUnitariaAutomatizada {
 	public void queNoSePuedanDarDeAltaDosDepartamentosConUnaMismaDireccion  () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA);
-		Departamento depto2 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA);
+		Departamento depto1 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto2 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
         //Ejecucion
 	    actual.agregarDepartamento(depto1);
 		Boolean resultadoObtenido = actual.agregarDepartamento(depto2);
@@ -119,9 +119,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
 		//Ejecucion
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
@@ -134,9 +134,9 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Alberdi",1, 8, "Haedo", true, 80000.0, TipoDeOperacion.VENTA);
-		Departamento depto2 = new Departamento("Gaona",2, 6, "Ramos", true, 50000.0, TipoDeOperacion.VENTA);
-		Departamento depto3 = new Departamento("Peron",3, 7, "San justo", true, 80000.0, TipoDeOperacion.VENTA);
+		Departamento depto1 = new Departamento("Alberdi",1, 8, "Haedo", true, 80000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto2 = new Departamento("Gaona",2, 6, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto3 = new Departamento("Peron",3, 7, "San justo", true, 80000.0, TipoDeOperacion.VENTA, null, null);
 		//Ejecucion
 		actual.agregarDepartamento(depto1);
 		actual.agregarDepartamento(depto2);
@@ -152,9 +152,9 @@ public class PruebaUnitariaAutomatizada {
 		Double precioMinimo = 0.0;
 		Double precioMaximo = 60000.0;
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
 		 //Ejecucion
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
@@ -166,14 +166,14 @@ public class PruebaUnitariaAutomatizada {
 	}
 	//punto i
 	@Test 
-	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNoNuloSiAplicanResultados() {
+	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnaListaNoNulaSiAplicanResultados() {
 		//Preparacion de datos
 		Double precioMinimo = 0.0;
 		Double precioMaximo = 60000.0;
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
 		 //Ejecucion
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
@@ -190,9 +190,9 @@ public class PruebaUnitariaAutomatizada {
 		Double precioMaximo = 40000.0;
 
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
 		 //Ejecucion
 		actual.agregarCasa(casa1);
 		actual.agregarCasa(casa2);
@@ -201,4 +201,39 @@ public class PruebaUnitariaAutomatizada {
 		//Validacion
 		assertNull(casasEncontradas);
 	}
+	//punto k
+	@Test
+	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() {
+		//Preparacion de datos
+		
+
+	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Cliente nuevo = new Cliente("Juan", "Monteagudo", 12345);
+		 //Ejecucion
+		actual.agregarCasa(casa1);
+		actual.agregarCliente(nuevo);
+		Venta nueva = new Venta(casa1, nuevo);
+		actual.agregarVenta(nueva);
+	    
+		//Validacion
+		assertNotNull(actual.mostrarVentas());
+	}
+	//punto L
+	@Test
+	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaListaNuloSiNoAplicanResultados() {
+		//Preparacion de datos
+		
+
+	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Cliente nuevo = new Cliente("Juan", "Monteagudo", 12345);
+		 //Ejecucion
+		actual.agregarCasa(casa1);
+		actual.agregarCliente(nuevo);
+	    
+		//Validacion
+		assertNull(actual.mostrarVentas());
+	}
+	
 }
