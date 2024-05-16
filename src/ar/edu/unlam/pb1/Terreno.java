@@ -48,11 +48,13 @@ public void setCodigo(String codigo) {
 	this.codigo = codigo;
 }
 
-
-
 @Override
 public String toString() {
-	return "Terreno [ubicacion=" + super.getCiudad() + ", codigo=" + codigo + "]";
+	return "Terreno [ancho=" + ancho + ", largo=" + largo + ", codigo=" + codigo + ", Ciudad=" + getCiudad()
+			+ ", Tipo=" + getTipo() + "]";
 }
+
+
+
    
 }

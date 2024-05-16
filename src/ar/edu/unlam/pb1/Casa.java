@@ -7,7 +7,7 @@ public class Casa extends Propiedad {
     
 	public Casa(String calle, Integer numero, String ciudad, Double precio, Boolean estaDisponible,
 			TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
-		super(ciudad, numero, ciudad, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
+		super(calle, numero, ciudad, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 		
 		this.codigo = "CASA"+contador++;
 		

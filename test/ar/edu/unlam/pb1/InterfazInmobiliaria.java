@@ -22,9 +22,8 @@ public class InterfazInmobiliaria {
 			System.out.println("7. Realizar la venta de una propiedad");
 			System.out.println("8. Realizar el alquiler de una propiedad");
 			System.out.println("9. Salir");
-			
-			opcionMenu = teclado.nextInt();
 		
+			opcionMenu = teclado.nextInt();
 		
 		
 		switch(opcionMenu) {
@@ -245,23 +244,23 @@ public class InterfazInmobiliaria {
 	
 	private static void modificarPropiedades(Scanner teclado) {
 		Integer opcion = 0;
-		 String calle = "";
-	     Integer numero = 0;
-	     String ciudad = "";
-	     Double precio = 0.0;
-	     Boolean estaDisponible;
-	     String tipoLetra = "";
-	     String nombre = "";
-	     String codigo = teclado.next();
-	     String nombrePropietario = "";
-	     Integer piso = 0;
-	 	Integer nroDepto = 0;
+		String calle = "";
+	    Integer numero = 0;
+	    String ciudad = "";
+	    Double precio = 0.0;
+	    Boolean estaDisponible;
+	    String tipoLetra = "";
+	    String nombre = "";
+	    String codigo ="";
+	    String nombrePropietario = "";
+	    Integer piso = 0;
 	 	Integer nroUnidad;
 		Integer cantidadDeAmbientes = 0;
 		Double ancho = 0.0;
 		Double largo = 0.0;
 		Double superficie = 0.0;
 		TipoDeOperacion tipo = TipoDeOperacion.VENTA;
+		
 		System.out.println("Que tipo de propiedad desea modificar? \n"
 				+ "1. Casa\n"
 				+ "2. Departamento\n"
@@ -518,6 +517,23 @@ public class InterfazInmobiliaria {
 		case 1: 
 			actual.ordenarCasasPorUbicacion();
 			System.out.println(actual.mostrarPropiedadesCasas());
+			break;
+		case 2:
+			actual.ordenarDeptosPorUbicacion();
+			System.out.println(actual.mostrarPropiedadesDeptos());
+			break;
+		case 3:
+			actual.ordenarPhsPorUbicacion();;
+			System.out.println(actual.mostrarPropiedadesPH());
+			break;
+		case 4:
+			actual.ordenarTerrenosPorUbicacion();
+			System.out.println(actual.mostrarPropiedadesTerrenos());
+			break;
+		case 5: 
+			actual.ordenarCamposPorUbicacion();
+			System.out.println(actual.mostrarPropiedadesCampos());
+			break;
 		}
 	}
 	private static void buscarPorRangoDePrecios(Scanner teclado) {
@@ -590,6 +606,10 @@ public class InterfazInmobiliaria {
 		String codigo;
 		Integer dni;
 		Casa casa = null;
+		Departamento depto = null;
+		PH ph=null;
+		Terreno terreno = null;
+		Campo campo = null;
 		System.out.println("Que tipo de propiedad desea comprar? \n"
 				+ "1. Casa\n"
 				+ "2. Departamento\n"
@@ -625,18 +645,137 @@ public class InterfazInmobiliaria {
 			} else {
 				System.out.println("La propiedad no esta disponible para la venta");
 			}
+			break;
+		case 2:
+			do {
+				System.out.println(actual.mostrarPropiedadesDeptos());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				depto =  actual.buscarCodigoDepto(codigo);
+				if(depto == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(depto == null);
+			if(depto.estaDisponibleParaVenta()) { 
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isVenta(depto, interesado)) {
+					Venta nueva = new Venta(depto, interesado);
+					actual.agregarVenta(nueva);
+					System.out.println("Usted ha comprado la siguiente propiedad: \n"
+							+ depto.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para la venta");
+			}
+			break;
+		case 3:
+			do {
+				System.out.println(actual.mostrarPropiedadesPH());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				ph =  actual.buscarCodigoPH(codigo);
+				if(ph == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(ph == null);
+			if(ph.estaDisponibleParaVenta()) { 
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isVenta(ph, interesado)) {
+					Venta nueva = new Venta(ph, interesado);
+					actual.agregarVenta(nueva);
+					System.out.println("Usted ha comprado la siguiente propiedad: \n"
+							+ ph.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para la venta");
+			}
+			break;
+		case 4:
+			do {
+				System.out.println(actual.mostrarPropiedadesTerrenos());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				terreno =  actual.buscarCodigoTerreno(codigo);
+				if(terreno == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(terreno == null);
+			if(terreno.estaDisponibleParaVenta()) { 
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isVenta(terreno, interesado)) {
+					Venta nueva = new Venta(terreno, interesado);
+					actual.agregarVenta(nueva);
+					System.out.println("Usted ha comprado la siguiente propiedad: \n"
+							+ terreno.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para la venta");
+			}
+			break;
+		case 5:
+			do {
+				System.out.println(actual.mostrarPropiedadesCampos());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				campo =  actual.buscarCodigoCampo(codigo);
+				if(campo == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(campo == null);
+			if(campo.estaDisponibleParaVenta()) { 
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isVenta(campo, interesado)) {
+					Venta nueva = new Venta(campo, interesado);
+					actual.agregarVenta(nueva);
+					System.out.println("Usted ha comprado la siguiente propiedad: \n"
+							+ campo.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para la venta");
+			}
+			break;
 			
-			
-		}
+	}
 	}
 	private static void mostrarVentas(Scanner teclado) {
-		System.out.println(actual.mostrarVentas().toString());
+		if(actual.mostrarVentas()!=null) {
+			System.out.println(actual.mostrarVentas().toString());
+		} else {
+			System.out.println("No hay ventas registradas");
+		}
+		
 	}
 	private static void alquilar(Scanner teclado) {
 		Integer opcion = 0;
 		String codigo;
 		Integer dni;
 		Casa casa = null;
+		Departamento depto = null;
+		PH ph = null;
 		System.out.println("Que tipo de propiedad desea alquilar? \n"
 				+ "1. Casa\n"
 				+ "2. Departamento\n"
@@ -662,6 +801,8 @@ public class InterfazInmobiliaria {
 				dni = teclado.nextInt();
 				Cliente interesado = actual.buscarCliente(dni);
 				if(interesado!= null && actual.isAlquiler(casa, interesado)) {
+					Alquiler nuevo = new Alquiler(casa, interesado, interesado.getNombre());
+					actual.agregarAlquiler(nuevo);
 					System.out.println("Usted ha alquilado la siguiente propiedad: \n"
 							+ casa.toString());
 				} else {
@@ -670,10 +811,72 @@ public class InterfazInmobiliaria {
 			} else {
 				System.out.println("La propiedad no esta disponible para alquilar");
 			}
+			break;
+		case 2:
+			do {
+				System.out.println(actual.mostrarPropiedadesDeptos());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				depto =  actual.buscarCodigoDepto(codigo);
+				if(depto == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(depto == null);
+			if(depto.estaDisponibleParaAlquiler()) {
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isAlquiler(depto, interesado)) {
+					Alquiler nuevo = new Alquiler(depto, interesado, interesado.getNombre());
+					actual.agregarAlquiler(nuevo);
+					System.out.println("Usted ha alquilado la siguiente propiedad: \n"
+							+ depto.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para alquilar");
+			}
+			break;
+		case 3:
+			do {
+				System.out.println(actual.mostrarPropiedadesPH());
+				System.out.println("Escriba el codigo de la propiedad: ");
+				codigo =teclado.next();
+				ph =  actual.buscarCodigoPH(codigo);
+				if(ph == null) {
+					System.out.println("El codigo es incorrecto");
+					
+				}
+				
+			}while(ph == null);
+			if(ph.estaDisponibleParaAlquiler()) {
+				System.out.println("Ingrese su dni");
+				dni = teclado.nextInt();
+				Cliente interesado = actual.buscarCliente(dni);
+				if(interesado!= null && actual.isAlquiler(ph, interesado)) {
+					Alquiler alquiler = new Alquiler(ph, interesado, interesado.getApellido());
+					actual.agregarAlquiler(alquiler);
+					System.out.println("Usted ha alquilado la siguiente propiedad: \n"
+							+ ph.toString());
+				} else {
+					System.out.println("Usted no es cliente nuestro");
+				}
+			} else {
+				System.out.println("La propiedad no esta disponible para alquilar");
+			}
+			break;
 		}
 	}
 	private static void mostrarAlquileres(Scanner teclado) {
+		if(actual.mostrarAlquileres()!=null) {
 			System.out.println(actual.mostrarAlquileres().toString());  
+		} else {
+			System.out.println("NO hay alquileres registrados");
+		}
+			
 		
 		}
 	}

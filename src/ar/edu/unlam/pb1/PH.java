@@ -54,7 +54,7 @@ public class PH extends Propiedad{
 
 	@Override
 	public String toString() {
-		return "PH [nroUnidad=" + nroUnidad  + ", codigo=" + codigo + ", ciudad=" +super.getCiudad() + "]";
+		return "PH [nroUnidad=" + nroUnidad  + ", codigo=" + codigo + ", ciudad=" +getCiudad() + ", tipo=" +getTipo() + "]";
 	}
     
 

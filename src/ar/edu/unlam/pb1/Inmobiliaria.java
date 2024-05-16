@@ -344,7 +344,50 @@ public class Inmobiliaria {
 			}
 		}
 	}
-	
+	public void ordenarDeptosPorUbicacion() {
+		for(int i= 0; i<departamentos.size();i++) {
+			for(int j= 0; j<departamentos.size()-1;j++) {
+				if(departamentos.get(j).getCiudad().compareTo(departamentos.get(j+1).getCiudad())> 0) {
+					Departamento temp = departamentos.get(j);
+					departamentos.set(j, departamentos.get(j+1));
+					departamentos.set(j+1, temp);
+				}
+			}
+		}
+	}
+	public void ordenarPhsPorUbicacion() {
+		for(int i= 0; i<phs.size();i++) {
+			for(int j= 0; j<phs.size()-1;j++) {
+				if(phs.get(j).getCiudad().compareTo(phs.get(j+1).getCiudad())> 0) {
+					PH temp = phs.get(j);
+					phs.set(j, phs.get(j+1));
+					phs.set(j+1, temp);
+				}
+			}
+		}
+	}
+	public void ordenarTerrenosPorUbicacion() {
+		for(int i= 0; i<terrenos.size();i++) {
+			for(int j= 0; j<terrenos.size()-1;j++) {
+				if(terrenos.get(j).getCiudad().compareTo(terrenos.get(j+1).getCiudad())> 0) {
+					Terreno temp = terrenos.get(j);
+					terrenos.set(j, terrenos.get(j+1));
+					terrenos.set(j+1, temp);
+				}
+			}
+		}
+	}
+	public void ordenarCamposPorUbicacion() {
+		for(int i= 0; i<campos.size();i++) {
+			for(int j= 0; j<campos.size()-1;j++) {
+				if(campos.get(j).getCiudad().compareTo(campos.get(j+1).getCiudad())> 0) {
+					Campo temp = campos.get(j);
+					campos.set(j, campos.get(j+1));
+					campos.set(j+1, temp);
+				}
+			}
+		}
+	}
 	//buscar por rango de precios
 	public String rangoPreciosCasas(Double precioMinimo, Double precioMaximo) {
 		String resultado = "";
@@ -562,24 +605,7 @@ public class Inmobiliaria {
 		}
 		return propiedadesAlquiladas;
 	}
-//	 public ArrayList<Casa> mostrarVentasCasas(){
-//		 ArrayList<Casa> casasVendidas = null;
-//		 Integer contadorCasa = 0;
-//		 for(Casa casa: casas) {
-//			 if(casa.fueVendida()) {
-//				 contadorCasa++;
-//			 }
-//		 }
-//		 if(contadorCasa>0) {
-//			 casasVendidas = new ArrayList<>();
-//			 for(Casa casa: casas) {
-//				 if(casa.fueVendida()) {
-//					 casasVendidas.add(casa);
-//				 }
-//			 }
-//		 }
-//		 return casasVendidas;
-//	 }
+
 //	 
 //	
 //	public String mostrarVentasCasas() {

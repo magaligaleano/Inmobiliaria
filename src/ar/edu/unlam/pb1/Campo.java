@@ -10,7 +10,7 @@ public class Campo extends Propiedad{
     
 	public Campo(String nombre, Double superficie, String ubicacion, Double precio,
 			Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
-		super(nombre, 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
+		super("", 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
 		this.nombre = nombre;
 		this.superficie = superficie;
 		this.codigo = "CAM"+contador++;
@@ -48,7 +48,7 @@ public class Campo extends Propiedad{
 
 	@Override
 	public String toString() {
-		return "Campo [nombre=" + nombre + ", ubicacion=" + super.getCiudad() + ", codigo=" + codigo + "]";
+		return "Campo [nombre=" + nombre + ", ubicacion=" + getCiudad() + ",precio= " + getPrecio() +", codigo=" + codigo + "]";
 	}
 
     
