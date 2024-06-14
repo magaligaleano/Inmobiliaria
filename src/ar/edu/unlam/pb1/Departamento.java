@@ -2,17 +2,13 @@ package ar.edu.unlam.pb1;
 
 public class Departamento extends Propiedad {
 
-	
 	private Integer piso;
-	private String codigo;
-	
 	private static Integer contador = 1;
 	
 	public Departamento(String calle, Integer piso, Integer nroDepto, String ciudad, Boolean estaDisponible,
-			Double precio, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
-		super(calle, nroDepto, ciudad, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
+			Double precio, TipoDeOperacion tipo, String nombrePropietario) {
+		super(calle, nroDepto, ciudad, precio, estaDisponible, tipo, nombrePropietario, "DEPTO"+contador++);
 		this.piso = piso;
-		this.codigo = "DEPTO"+contador++;
 	}
 	
 	public Integer getPiso() {
@@ -22,17 +18,12 @@ public class Departamento extends Propiedad {
 		this.piso = piso;
 	}
 	
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+	
 	
 	
 	@Override
 	public String toString() {
-		return "Departamento [calle=" + getCalle() + ", piso=" + piso + ", nroDepto=" + getNumero() + ", codigo=" + codigo
+		return "Departamento [calle=" + getCalle() + ", piso=" + piso + ", nroDepto=" + getNumero() + ", codigo=" + getCodigo()
 				+ ", ciudad=" + getCiudad() + "]";
 	}
 	

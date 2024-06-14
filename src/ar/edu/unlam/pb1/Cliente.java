@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 
 	private String nombre;
 	private String apellido;
@@ -34,6 +34,11 @@ public class Cliente {
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
+	@Override
+	public int compareTo(Cliente o) {
+		return this.getDni() - o.getDni();
+	}
+	
 	
 	
 }

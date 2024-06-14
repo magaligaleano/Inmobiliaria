@@ -7,32 +7,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class PruebaUnitariaAutomatizada {
-
-	@Test
-	public void queSiTengoTresCasasDeCincuentaCienYSesentaMilElPrecioPromedioSeaSetenta() {
-		//Preparacion de datos
-		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
-        //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCasa(casa2);
-		actual.agregarCasa(casa3);
-		//Validacion
-		assertEquals(70000.0, actual.calcularPromedioPrecioDeLasCasas(), 0.01);
-	}
-	@Test
-	public void queSiNoTengoCasasElPromedioSeaCero() {
-		//Preparacion de datos
-				Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-				
-		//Ejecucion
-				
-	    //Validacion
-		assertEquals(0.0, actual.calcularPromedioPrecioDeLasCasas(), 0.01);
-	}
-	
 	
 	
 	//punto a
@@ -40,10 +14,10 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaUnaCasaEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
 		Boolean resultadoEsperado = true;
 		//Ejecucion
-		Boolean resultadoObtenido = actual.agregarCasa(casa);
+		Boolean resultadoObtenido = actual.agregarPropiedad(casa);
 		//Validacion
 		assertEquals(resultadoEsperado, resultadoObtenido);
 	}
@@ -53,187 +27,137 @@ public class PruebaUnitariaAutomatizada {
 	public void queSePuedaDarDeAltaDosCasaEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null);
 		Boolean resultadoEsperado = true;
 		//Ejecucion
-		Boolean resultadoObtenido1 = actual.agregarCasa(casa1);
-		Boolean resultadoObtenido2 = actual.agregarCasa(casa2);
+		Boolean resultadoObtenido1 = actual.agregarPropiedad(casa1);
+		Boolean resultadoObtenido2 = actual.agregarPropiedad(casa2);
 		//Validacion
 		assertEquals(resultadoEsperado, resultadoObtenido1);
 		assertTrue(resultadoObtenido2);
 	}
 	//punto c
 	@Test
-	public void queNoSePuedanDarDeAltaDosCasasConUnaMismaDireccion  () {
-		//Preparacion de datos
-		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Gaona",500, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Haedo", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		//Ejecucion
-	    actual.agregarCasa(casa1);
-		Boolean resultadoObtenido = actual.agregarCasa(casa2);
-		//Validacion
-		assertFalse(resultadoObtenido);
-	}
-	//punto d
-	@Test
 	public void queSePuedaDarDeAltaUnDepartamentoEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null);
 		//Ejecucion
-		Boolean resultadoObtenido = actual.agregarDepartamento(depto);
+		Boolean resultadoObtenido = actual.agregarPropiedad(depto);
 		//Validacion
 		assertTrue(resultadoObtenido);
 	}
-	//punto e
+	//punto d
 	@Test
 	public void queSePuedaDarDeAltaDosDepartamentoEnLaInmobiliaria () {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
-		Departamento depto2 = new Departamento("Gaona",1, 5, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto1 = new Departamento("Alberdi",2, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null);
+		Departamento depto2 = new Departamento("Gaona",1, 5, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null);
         //Ejecucion
-		Boolean resultadoObtenido = actual.agregarDepartamento(depto1);
-		Boolean resultadoObtenido2 = actual.agregarDepartamento(depto2);
+		Boolean resultadoObtenido = actual.agregarPropiedad(depto1);
+		Boolean resultadoObtenido2 = actual.agregarPropiedad(depto2);
 		//Validacion
 		assertTrue(resultadoObtenido);
 		assertTrue(resultadoObtenido2);
 	}
-	//punto f
-	@Test
-	public void queNoSePuedanDarDeAltaDosDepartamentosConUnaMismaDireccion  () {
-		//Preparacion de datos
-		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
-		Departamento depto2 = new Departamento("Gaona",1, 8, "Haedo", true, 50000.0, TipoDeOperacion.VENTA, null, null);
-        //Ejecucion
-	    actual.agregarDepartamento(depto1);
-		Boolean resultadoObtenido = actual.agregarDepartamento(depto2);
-		//Validacion
-		assertFalse(resultadoObtenido);
-	}
-	//punto g 
+
+	//punto e
 	@Test
 	public void queSePuedaObtenerElValorPromedioDeLasCasas() {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
+		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
+		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null);
+		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null);
 		//Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCasa(casa2);
-		actual.agregarCasa(casa3);
+		actual.agregarPropiedad(casa1);
+		actual.agregarPropiedad(casa2);
+		actual.agregarPropiedad(casa3);
 		//Validacion
 		assertEquals(70000.0, actual.calcularPromedioPrecioDeLasCasas(), 0.01);
 	}
-	//punto h
+	//punto f
 	@Test
 	public void queSePuedaObtenerElValorPromedioDeLosDepartamentos() {
 		//Preparacion de datos
 		Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Departamento depto1 = new Departamento("Alberdi",1, 8, "Haedo", true, 80000.0, TipoDeOperacion.VENTA, null, null);
-		Departamento depto2 = new Departamento("Gaona",2, 6, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null, null);
-		Departamento depto3 = new Departamento("Peron",3, 7, "San justo", true, 80000.0, TipoDeOperacion.VENTA, null, null);
+		Departamento depto1 = new Departamento("Alberdi",1, 8, "Haedo", true, 80000.0, TipoDeOperacion.VENTA, null);
+		Departamento depto2 = new Departamento("Gaona",2, 6, "Ramos", true, 50000.0, TipoDeOperacion.VENTA, null);
+		Departamento depto3 = new Departamento("Peron",3, 7, "San justo", true, 80000.0, TipoDeOperacion.VENTA, null);
 		//Ejecucion
-		actual.agregarDepartamento(depto1);
-		actual.agregarDepartamento(depto2);
-		actual.agregarDepartamento(depto3);
+		actual.agregarPropiedad(depto1);
+		actual.agregarPropiedad(depto2);
+		actual.agregarPropiedad(depto3);
 		//Validacion
 		assertEquals(70000.0, actual.calcularPromedioPrecioDeLosDeptos(), 0.01);
 	}
 	
-	//punto que agregue porque inicialmente no cree un array en esa busqueda, sino un string concatenado
-	@Test 
-	public void queSiBuscoUnaCasaPorRangoDePrecioLaEncuentre() {
+	//punto g
+	
+	@Test
+	public void queSePuedaAgregarUnClienteALaInmobiliaria() {
 		//Preparacion de datos
-		Double precioMinimo = 0.0;
-		Double precioMaximo = 60000.0;
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
-		 //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCasa(casa2);
-		actual.agregarCasa(casa3);
-		String casasEncontradas = actual.rangoPreciosCasas(precioMinimo, precioMaximo);
-		
-		//Validacion
-		assertEquals(casa1 + "\n" + casa3 + "\n", casasEncontradas);
+	    Cliente nuevo = new Cliente("Magui", "Galeano", 39927593);
+	    //Ejecucion
+	    
+	    Boolean resultado = actual.agregarCliente(nuevo);
+	    //Resultado
+	    
+	    assertTrue(resultado);
+
+	}
+	//punto h
+	@Test
+	public void queNoSePuedanAgregarDosClientesConUnMismoDni() {
+		//Preparacion de datos
+	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
+	    Cliente cliente = new Cliente("Magui", "Galeano", 39927593);
+	    Cliente cliente2 = new Cliente("Facu", "Sanabria", 39927593);
+	    //Ejecucion
+	    actual.agregarCliente(cliente);
+	    actual.agregarCliente(cliente2);
+	    //Resultado
+	    
+	    assertEquals(1, actual.mostrarClientes().size());
 	}
 	//punto i
-	@Test 
-	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnaListaNoNulaSiAplicanResultados() {
-		//Preparacion de datos
-		Double precioMinimo = 0.0;
-		Double precioMaximo = 60000.0;
-	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
-		 //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCasa(casa2);
-		actual.agregarCasa(casa3);
-		ArrayList <Casa> casasEncontradas = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
-		
-		assertNotNull(casasEncontradas);
-	}
-	//punto j, 
 	@Test
-	public void queLaBusquedaPorRangoDePrecioDeMeArrojeUnArrayNuloSiNoAplicanResultados() {
-		//Preparacion de datos
-		Double precioMinimo = 0.0;
-		Double precioMaximo = 40000.0;
-
-	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa2 = new Casa("Gaona",500, "Ramos", 100000.0, true, TipoDeOperacion.VENTA, null, null);
-		Casa casa3 = new Casa("Peron",100, "San Justo", 60000.0, true, TipoDeOperacion.VENTA, null, null);
-		 //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCasa(casa2);
-		actual.agregarCasa(casa3);
-		ArrayList <Casa> casasEncontradas = actual.rangoPrecioCasasArray(precioMinimo, precioMaximo);
-		//Validacion
-		assertNull(casasEncontradas);
-	}
-	//punto k
-	@Test
-	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaLista() {
+	public void queSePuedaRealizarLaVentaDeUnaPropiedad() {
 		//Preparacion de datos
 		
-
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Cliente nuevo = new Cliente("Juan", "Monteagudo", 12345);
+		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
+		String propietario = "Alfredo";
+		Venta nueva = new Venta(casa, propietario);
 		 //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCliente(nuevo);
-		Venta nueva = new Venta(casa1, nuevo);
+		actual.agregarPropiedad(casa);
 		actual.agregarVenta(nueva);
 	    
 		//Validacion
+		assertTrue(actual.agregarVenta(nueva));
 		assertNotNull(actual.mostrarVentas());
 	}
-	//punto L
+
+
+	//punto j
 	@Test
-	public void queLaBusquedaDePropiedadesPorVentaMeArrojeUnaListaNuloSiNoAplicanResultados() {
-		//Preparacion de datos
-		
+	public void queSePuedaRealizarElAlquilerDeUnaPropiedad() {
 
 	    Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
-		Casa casa1 = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null, null);
-		Cliente nuevo = new Cliente("Juan", "Monteagudo", 12345);
+		Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
+		String nombreInquilino = "Raul";
+		Alquiler nuevo = new Alquiler(casa, nombreInquilino);
+		
 		 //Ejecucion
-		actual.agregarCasa(casa1);
-		actual.agregarCliente(nuevo);
+		actual.agregarPropiedad(casa);
+		actual.agregarAlquiler(nuevo);
+		
 	    
 		//Validacion
-		assertNull(actual.mostrarVentas());
+		assertNotNull(actual.mostrarAlquileres());
 	}
 	
 }

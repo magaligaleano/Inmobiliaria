@@ -5,15 +5,14 @@ public class Terreno extends Propiedad {
    private Double ancho;
    private Double largo;
    private Double superficie;
-   private String codigo;
+
    
 public Terreno(Double ancho, Double largo, Double superficie, String ubicacion, Double precio,
-		Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
-	super(null, 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, nombreInquilino);
+		Boolean estaDisponible, TipoDeOperacion tipo, String nombrePropietario) {
+	super(null, 0, ubicacion, precio, estaDisponible, tipo, nombrePropietario, "TERR"+contador++);
 	this.ancho = ancho;
 	this.largo = largo;
 	this.superficie = superficie;
-	this.codigo = "TERR"+contador++;
 }
 
 public Double getAncho() {
@@ -40,17 +39,10 @@ public void setSuperficie(Double superficie) {
 	this.superficie = superficie;
 }
 
-public String getCodigo() {
-	return codigo;
-}
-
-public void setCodigo(String codigo) {
-	this.codigo = codigo;
-}
 
 @Override
 public String toString() {
-	return "Terreno [ancho=" + ancho + ", largo=" + largo + ", codigo=" + codigo + ", Ciudad=" + getCiudad()
+	return "Terreno [ancho=" + ancho + ", largo=" + largo + ", codigo=" + getCodigo() + ", Ciudad=" + getCiudad()
 			+ ", Tipo=" + getTipo() + "]";
 }
 

@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
-public class Propiedad {
+public abstract class Propiedad {
 	private String calle;
     private Integer numero;
     private String ciudad;
@@ -9,9 +9,11 @@ public class Propiedad {
     private TipoDeOperacion tipo;
     private String nombrePropietario;
     private String nombreInquilino;
+    private String codigo;
+    
     
     public Propiedad(String calle, Integer numero, String ciudad, Double precio, Boolean estaDisponible,
-			TipoDeOperacion tipo, String nombrePropietario, String nombreInquilino) {
+			TipoDeOperacion tipo, String nombrePropietario, String codigo) {
 		this.calle = calle;
 		this.numero = numero;
 		this.ciudad = ciudad;
@@ -19,9 +21,11 @@ public class Propiedad {
 		this.estaDisponible = estaDisponible;
 		this.tipo = tipo;
 		this.nombrePropietario = nombrePropietario;
-		this.nombreInquilino = nombreInquilino;
+		this.codigo = codigo;
+		
 	}
-
+//    public abstract String getCodigo();
+    
 	public String getCalle() {
 		return calle;
 	}
@@ -81,9 +85,20 @@ public class Propiedad {
 	public String getNombreInquilino() {
 		return nombreInquilino;
 	}
+	
+
 
 	public void setNombreInquilino(String nombreInquilino) {
 		this.nombreInquilino = nombreInquilino;
+	}
+
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public Boolean estaDisponibleParaVenta() {
@@ -117,6 +132,8 @@ public class Propiedad {
 	public String toString() {
 		return "Propiedad [calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", precio=" + precio + "]";
 	}
+
+	
 
 	
     

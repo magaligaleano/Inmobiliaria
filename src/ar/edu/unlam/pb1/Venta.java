@@ -1,34 +1,26 @@
 package ar.edu.unlam.pb1;
 
-public class Venta {
+public class Venta implements Operacion{
 	Propiedad propiedad;
-	Cliente cliente;
+	String nuevoPropietario;
 	
-	public Venta(Propiedad propiedad, Cliente cliente) {
+	public Venta(Propiedad propiedad, String nuevoPropietario) {
 		
 		this.propiedad = propiedad;
-		this.cliente = cliente;
+		this.nuevoPropietario = nuevoPropietario;
 	}
 
-	public Propiedad getPropiedad() {
-		return propiedad;
-	}
 
-	public void setPropiedad(Propiedad propiedad) {
-		this.propiedad = propiedad;
-	}
+	@Override
+    public void ejecutar() {
+        propiedad.setNombrePropietario(nuevoPropietario);
+        propiedad.setEstaDisponible(false);
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 	@Override
 	public String toString() {
-		return "Venta [propiedad=" + propiedad + ", cliente=" + cliente + "]";
+		return "Venta [propiedad=" + propiedad + ", nuevoPropietario=" + nuevoPropietario + "]";
 	}
 
 	
