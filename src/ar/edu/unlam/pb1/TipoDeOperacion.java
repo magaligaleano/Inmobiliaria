@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
 public enum TipoDeOperacion {
-	VENTA, ALQUILER;
+	VENTA, ALQUILER, PERMUTA;
 
 }

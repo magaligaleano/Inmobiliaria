@@ -159,5 +159,21 @@ public class PruebaUnitariaAutomatizada {
 		//Validacion
 		assertNotNull(actual.mostrarAlquileres());
 	}
+	//punto k
+	@Test
+	public void queSePuedaRealizarLaPermutaDeDosPropiedades() {
+		 Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
+			Casa casa = new Casa("Alberdi",640, "Haedo", 50000.0, true, TipoDeOperacion.VENTA, null);
+			String nombreInquilino = "Raul";
+			Alquiler nuevo = new Alquiler(casa, nombreInquilino);
+			
+			 //Ejecucion
+			actual.agregarPropiedad(casa);
+			actual.agregarAlquiler(nuevo);
+			
+		    
+			//Validacion
+			assertNotNull(actual.mostrarAlquileres());
+	}
 	
 }

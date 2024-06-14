@@ -3,6 +3,7 @@ package ar.edu.unlam.pb1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Inmobiliaria {
 
@@ -12,8 +13,10 @@ public class Inmobiliaria {
 	private Integer telefono;
 	private HashSet <Cliente> clientes;
 	private ArrayList <Propiedad> propiedades;
-	private ArrayList <Venta>ventas;
-	private ArrayList <Alquiler> alquileres;
+	private TreeSet<Venta>ventas;
+	private TreeSet <Alquiler> alquileres;
+	private TreeSet <Permuta> permutas;
+
 	
 	
 	public Inmobiliaria(String nombre, String direccion, String eMail, Integer telefono) {
@@ -23,8 +26,9 @@ public class Inmobiliaria {
 		this.telefono = telefono;
 		this.clientes = new HashSet<>();
 		this.propiedades = new ArrayList<>();
-		this.ventas = new ArrayList<>();
-		this.alquileres = new ArrayList<>();
+		this.ventas = new TreeSet<>();
+		this.alquileres = new TreeSet<>();
+		this.permutas = new TreeSet<>();
 	}
 	public Boolean agregarPropiedad(Propiedad nueva) {
 		return propiedades.add(nueva);
@@ -32,12 +36,11 @@ public class Inmobiliaria {
 		
 	public Boolean agregarCliente(Cliente nuevo) {
 		for(Cliente cliente: clientes) {
-			if(cliente.compareTo(nuevo)==0) {
-				return false;
-			}
-		}
-		return clientes.add(nuevo);
-		
+			  if (cliente.getDni().equals(nuevo.getDni())) {
+	                return false;
+	            }
+	        }
+		return clientes.add(nuevo);		
 			
 	}
 	
@@ -47,23 +50,10 @@ public class Inmobiliaria {
 	public Boolean agregarAlquiler(Alquiler nuevo) {
 		return alquileres.add(nuevo);
 	}
-	public Boolean isVenta(Propiedad propiedad, Cliente cliente) {
-		if(propiedad.estaDisponibleParaVenta()) {
-			propiedad.setEstaDisponible(false);
-			propiedad.setNombrePropietario(cliente.getNombre());
-			return true;
-		}
-		
-		 return false;
+	public Boolean agregarPermuta(Permuta nueva) {
+		return permutas.add(nueva);
 	}
-	public Boolean isAlquiler(Propiedad propiedad, Cliente cliente) {
-		if(propiedad.estaDisponibleParaAlquiler()) {
-			propiedad.setEstaDisponible(false);
-			propiedad.setNombreInquilino(cliente.getNombre());
-			return true;
-		}
-		return false;
-	}
+
 			
 	public String getNombre() {
 		return nombre;
@@ -183,43 +173,29 @@ public class Inmobiliaria {
 
 	//ordenar propiedades por precio
 	
-	public ArrayList<Propiedad> ordenarPropiedadesPorPrecio(ArrayList<Propiedad> propiedades) {
+	public ArrayList<Propiedad> ordenarPropiedadesPorPrecio() {
 		Collections.sort(propiedades, new OrdenadosPorPrecio());
 		return propiedades;
 		
 	}
 
 //	//ordenar propiedades por ubicacion
-	public void ordenarPropiedadesPorUbicacion() {
-		for(int i= 0; i<propiedades.size();i++) {
-			for(int j= 0; j<propiedades.size()-1;j++) {
-				if(propiedades.get(j).getCiudad().compareTo(propiedades.get(j+1).getCiudad())> 0) {
-					Propiedad temp = propiedades.get(j);
-					propiedades.set(j, propiedades.get(j+1));
-					propiedades.set(j+1, temp);
-				}
-			}
+	public ArrayList<Propiedad> ordenarPropiedadesPorUbicacion() {
+		Collections.sort(propiedades, new OrdenadasPorUbicacion());
+		return propiedades;
+		
 		}
-	}
+	
 	
 	//buscar por rango de precios
 	
 	public ArrayList<Propiedad> buscarPorRangoDePrecio(Double precioMinimo, Double precioMaximo) {
-		ArrayList <Propiedad> propiedadesEncontradas = null;
-		Integer contador = 0;
-		for(Propiedad actual : propiedades) {
-			if(actual.getPrecio()>=precioMinimo && actual.getPrecio()<=precioMaximo) { 
-				contador++;
-			}
-		}
-		if(contador>0) {
-			propiedadesEncontradas = new ArrayList<>();
+		ArrayList <Propiedad> propiedadesEncontradas = new ArrayList<>();
 			for(Propiedad actual : propiedades) {
 				if(actual.getPrecio()>=precioMinimo && actual.getPrecio()<=precioMaximo) { 
 					propiedadesEncontradas.add(actual);
 				}
 			}
-		}
 	   return propiedadesEncontradas;
 		
 	}
@@ -357,6 +333,37 @@ public class Inmobiliaria {
 		}
 		return propiedadesAlquiladas;
 	}
-}
+
+
+    public TreeSet<Permuta> mostrarPermutas(){
+    	TreeSet<Permuta> propiedadesPermutadas = null;
+    	if(permutas.size()>0){
+    		propiedadesPermutadas = new TreeSet<>();
+    		for(Permuta permuta: permutas) {
+    			propiedadesPermutadas.add(permuta);
+    		}
+    		}
+    	return propiedadesPermutadas;
+    	}
+    
+    public ArrayList<Propiedad> getPropiedades(String nombrePropietario) {
+    	ArrayList<Propiedad> buscadas = null;
+    	Integer contador = 0;
+    	for(Propiedad propiedad : propiedades) {
+    		if(propiedad.getNombrePropietario().equals(nombrePropietario)) {
+    			contador++;
+    		}
+    	}
+    	if(contador>0) {
+    		buscadas = new ArrayList<>();
+    		for(Propiedad propiedad : propiedades) {
+        		if(propiedad.getNombrePropietario().equals(nombrePropietario)) {
+        			buscadas.add(propiedad);
+        		}
+        	}
+    	}
+    	return buscadas;
+    }
+    }
 
 

@@ -113,6 +113,12 @@ public abstract class Propiedad {
     	}
     	return false;
     }
+    public Boolean estaDisponibleParaPermuta() {
+    	if(estaDisponible && tipo == TipoDeOperacion.PERMUTA) {
+    		return true;
+    	}
+    	return false;
+    }
     public Boolean fueVendida() {
     	if(estaDisponible==false && tipo == TipoDeOperacion.VENTA) {
     		return true;

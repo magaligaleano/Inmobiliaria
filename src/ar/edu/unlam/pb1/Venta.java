@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
-public class Venta implements Operacion{
+public class Venta implements Operacion, Comparable<Venta>{
 	Propiedad propiedad;
 	String nuevoPropietario;
 	
@@ -21,6 +21,12 @@ public class Venta implements Operacion{
 	@Override
 	public String toString() {
 		return "Venta [propiedad=" + propiedad + ", nuevoPropietario=" + nuevoPropietario + "]";
+	}
+
+
+	@Override
+	public int compareTo(Venta o) {
+		return this.propiedad.getCodigo().compareTo(o.propiedad.getCodigo());
 	}
 
 	

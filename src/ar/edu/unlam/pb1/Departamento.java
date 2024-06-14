@@ -17,15 +17,18 @@ public class Departamento extends Propiedad {
 	public void setPiso(Integer piso) {
 		this.piso = piso;
 	}
-	
-	
-	
-	
+
 	@Override
 	public String toString() {
-		return "Departamento [calle=" + getCalle() + ", piso=" + piso + ", nroDepto=" + getNumero() + ", codigo=" + getCodigo()
-				+ ", ciudad=" + getCiudad() + "]";
+		return "Departamento [piso=" + piso + ", getCalle()=" + getCalle() + ", getCiudad()=" + getCiudad()
+				+ ", getPrecio()=" + getPrecio() + ", getTipo()=" + getTipo() + ", getNombrePropietario()="
+				+ getNombrePropietario() + ", getCodigo()=" + getCodigo() + "]";
 	}
+	
+	
+	
+	
+
 	
 	
 }

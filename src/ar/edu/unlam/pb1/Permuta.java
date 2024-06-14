@@ -20,5 +20,7 @@ public class Permuta implements Operacion{
 		public String toString() {
 			return "Permuta [propiedadA=" + propiedadA + ", propiedadB=" + propiedadB + "]";
 		}
+
+		
 	}
 
