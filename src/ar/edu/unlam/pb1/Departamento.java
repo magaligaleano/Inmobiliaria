@@ -20,9 +20,9 @@ public class Departamento extends Propiedad {
 
 	@Override
 	public String toString() {
-		return "Departamento [piso=" + piso + ", getCalle()=" + getCalle() + ", getCiudad()=" + getCiudad()
-				+ ", getPrecio()=" + getPrecio() + ", getTipo()=" + getTipo() + ", getNombrePropietario()="
-				+ getNombrePropietario() + ", getCodigo()=" + getCodigo() + "]";
+		return "Departamento [Codigo =" +getCodigo() + ", Piso=" + piso + ", Calle=" + getCalle() + ", Ciudad=" + getCiudad()
+				+ ", Precio=" + getPrecio() + ", Tipo=" + getTipo() + ", NombrePropietario="
+				+ getNombrePropietario() + "]";
 	}
 	
 	

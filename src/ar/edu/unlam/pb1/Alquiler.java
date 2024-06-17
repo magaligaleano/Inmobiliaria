@@ -12,6 +12,18 @@ public Alquiler(Propiedad propiedad, String nombreInquilino) {
 
 
 
+public Propiedad getPropiedad() {
+	return propiedad;
+}
+
+
+
+public String getNombreInquilino() {
+	return nombreInquilino;
+}
+
+
+
 @Override
 public void ejecutar() {
 	if(propiedad.estaDisponibleParaAlquiler()) {

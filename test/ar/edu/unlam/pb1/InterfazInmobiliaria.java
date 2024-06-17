@@ -74,6 +74,9 @@ public class InterfazInmobiliaria {
 			break;
 		case 9:
 			permutar(teclado);
+		case 0:
+			System.out.println("Nos vemosss <3");
+			break;
 		}
 		}while(opcionMenu!=0);
 	}
@@ -518,8 +521,13 @@ public class InterfazInmobiliaria {
 		precioMaximo = teclado.nextDouble();
 		System.out.println("Precio minimo: ");
 		precioMinimo = teclado.nextDouble();
-		
+		try {
 			System.out.println(actual.buscarPorRangoDePrecio(precioMinimo, precioMaximo).toString()); 
+
+		}catch(SinResultadosException e) {
+			System.out.println(e.getMessage());
+            System.out.println("Intente nuevamente.");
+		}
 		
 	}
 	private static void buscarPorUbicacion(Scanner teclado) {
@@ -585,9 +593,16 @@ public class InterfazInmobiliaria {
 		if(interesado!= null) {
 			Venta nueva = new Venta(propiedadVenta, interesado.getNombre()+ " "+interesado.getApellido());
 			nueva.ejecutar();
-			actual.agregarVenta(nueva);
-			System.out.println("Propiedad vendida : \n"
-					+ propiedadVenta.toString());
+			try {
+				actual.agregarVenta(nueva);
+				System.out.println("Propiedad vendida : \n"
+						+ propiedadVenta.toString());
+			}catch (UmbralMinimoNoAlcanzadoException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Intente nuevamente.");
+            }
+				
+			
 		} else {
 			System.out.println("el dni no esta registrado");
 		}
@@ -651,7 +666,7 @@ public class InterfazInmobiliaria {
 			Alquiler nuevo = new Alquiler(propiedadAlquiler, interesado.getNombre()+ " "+interesado.getApellido());
 			actual.agregarAlquiler(nuevo);
 			System.out.println("Propiedad alquilada: \n"
-					+ propiedadAlquiler.toString());
+					+ propiedadAlquiler.toString() +" Inquilino= "+nuevo.getNombreInquilino());
 		} else {
 			System.out.println("El dni no esta registrado");
 		}

@@ -30,6 +30,7 @@ public class Inmobiliaria {
 		this.alquileres = new TreeSet<>();
 		this.permutas = new TreeSet<>();
 	}
+	//metodos agregar
 	public Boolean agregarPropiedad(Propiedad nueva) {
 		return propiedades.add(nueva);
 	}	
@@ -67,7 +68,7 @@ public class Inmobiliaria {
 		return false;
 	}
 
-			
+// getters y setters			
 	public String getNombre() {
 		return nombre;
 	}
@@ -296,25 +297,6 @@ public class Inmobiliaria {
 		
 	}
 
-//	public Boolean verificacionDeDireccionCasa(String calle, Integer numero, String ciudad) {
-//		for(Casa actual : casas) {
-//			if(actual.getCalle().equals(calle)&& actual.getNumero().equals(numero) && actual.getCiudad().equals(ciudad)) {
-//				return false;
-//			}
-//			
-//		}
-//		return true;
-//	}
-//	public Boolean verificacionDeDireccionDepto(String calle, Integer nroDepto, Integer piso, String ciudad) {
-//		for(Departamento actual : departamentos) {
-//			if(actual.getCalle().equals(calle)&& actual.getNumero().equals(nroDepto) 
-//					&& actual.getPiso().equals(piso) && actual.getCiudad().equals(ciudad)) {
-//				return false;
-//			}
-//			
-//		}
-//		return true;
-//	}
 	public Cliente buscarCliente(Integer dni) {
 		Cliente clienteABuscar = null;
 		for(Cliente cliente : clientes) {
