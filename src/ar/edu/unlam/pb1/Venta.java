@@ -11,6 +11,15 @@ public class Venta implements Operacion, Comparable<Venta>{
 	}
 
 
+	public Propiedad getPropiedad() {
+		return propiedad;
+	}
+
+	public String getNuevoPropietario() {
+		return nuevoPropietario;
+	}
+
+
 	@Override
     public void ejecutar() {
         propiedad.setNombrePropietario(nuevoPropietario);

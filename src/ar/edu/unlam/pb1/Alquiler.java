@@ -14,7 +14,10 @@ public Alquiler(Propiedad propiedad, String nombreInquilino) {
 
 @Override
 public void ejecutar() {
-	 propiedad.setNombreInquilino(nombreInquilino);
+	if(propiedad.estaDisponibleParaAlquiler()) {
+		propiedad.setNombreInquilino(nombreInquilino);
+	}
+	 
 	
 }
 

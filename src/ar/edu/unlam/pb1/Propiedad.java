@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
-public abstract class Propiedad {
+public class Propiedad {
 	private String calle;
     private Integer numero;
     private String ciudad;
@@ -119,26 +119,12 @@ public abstract class Propiedad {
     	}
     	return false;
     }
-    public Boolean fueVendida() {
-    	if(estaDisponible==false && tipo == TipoDeOperacion.VENTA) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
-    public Boolean fueAlquilada() {
-    	if(estaDisponible==false && tipo == TipoDeOperacion.ALQUILER) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
-
+    
 	@Override
 	public String toString() {
 		return "Propiedad [calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", precio=" + precio + "]";
 	}
-
+	
 	
 
 	

@@ -7,7 +7,7 @@ public class InterfazInmobiliaria {
 	
 	private static Inmobiliaria actual = new Inmobiliaria("InmobiliariaPiola", "Av. Don Bosco", "inmobiliariapiola@gmail.com", 4678910);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UmbralMinimoNoAlcanzadoException, SinResultadosException {
 		
 		Scanner teclado = new Scanner(System.in);
 		Integer opcionMenu = 0;
@@ -119,10 +119,13 @@ public class InterfazInmobiliaria {
 			teclado.nextLine();
 			if(estaDisponible){
 				System.out.println("V----Venta\n"
-						+ "A----Alquiler");
+						+ "A----Alquiler \n"
+						+ "P----Permutar");
 				tipoLetra = teclado.next().toUpperCase();
 				if(tipoLetra.equals("A")) {
 					tipo = TipoDeOperacion.ALQUILER;
+				} else if(tipoLetra.equals("P")) {
+					tipo = TipoDeOperacion.PERMUTA;
 				}
 			}
 			System.out.println("Nombre de propietario:");
@@ -152,10 +155,13 @@ public class InterfazInmobiliaria {
 			
 			if(estaDisponible){
 				System.out.println("V----Venta\n"
-						+ "A----Alquiler");
+						+ "A----Alquiler \n"
+						+ "P----Permutar");
 				tipoLetra = teclado.next().toUpperCase();
 				if(tipoLetra.equals("A")) {
 					tipo = TipoDeOperacion.ALQUILER;
+				} else if(tipoLetra.equals("P")) {
+					tipo = TipoDeOperacion.PERMUTA;
 				}
 			}
 			System.out.println("Nombre de propietario:");
@@ -179,10 +185,13 @@ public class InterfazInmobiliaria {
 			teclado.nextLine();
 			if(estaDisponible){
 				System.out.println("V----Venta\n"
-						+ "A----Alquiler");
+						+ "A----Alquiler \n"
+						+ "P----Permutar");
 				tipoLetra = teclado.next().toUpperCase();
 				if(tipoLetra.equals("A")) {
 					tipo = TipoDeOperacion.ALQUILER;
+				} else if(tipoLetra.equals("P")) {
+					tipo = TipoDeOperacion.PERMUTA;
 				}
 			}
 			System.out.println("Nombre de propietario:");
@@ -206,10 +215,13 @@ public class InterfazInmobiliaria {
 			teclado.nextLine();
 			if(estaDisponible){
 				System.out.println("V----Venta\n"
-						+ "A----Alquiler");
+						+ "A----Alquiler \n"
+						+ "P----Permutar");
 				tipoLetra = teclado.next().toUpperCase();
 				if(tipoLetra.equals("A")) {
 					tipo = TipoDeOperacion.ALQUILER;
+				} else if(tipoLetra.equals("P")) {
+					tipo = TipoDeOperacion.PERMUTA;
 				}
 			}
 			System.out.println("Nombre de propietario:");
@@ -231,10 +243,13 @@ public class InterfazInmobiliaria {
 			teclado.nextLine();
 			if(estaDisponible){
 				System.out.println("V----Venta\n"
-						+ "A----Alquiler");
+						+ "A----Alquiler \n"
+						+ "P----Permutar");
 				tipoLetra = teclado.next().toUpperCase();
 				if(tipoLetra.equals("A")) {
 					tipo = TipoDeOperacion.ALQUILER;
+				} else if(tipoLetra.equals("P")) {
+					tipo = TipoDeOperacion.PERMUTA;
 				}
 			}
 			System.out.println("Nombre de propietario:");
@@ -294,10 +309,13 @@ public class InterfazInmobiliaria {
 				
 				if(estaDisponible){
 					System.out.println("V----Venta\n"
-							+ "A----Alquiler");
+							+ "A----Alquiler \n"
+							+ "P----Permutar");
 					tipoLetra = teclado.next().toUpperCase();
 					if(tipoLetra.equals("A")) {
 						tipo = TipoDeOperacion.ALQUILER;
+					} else if(tipoLetra.equals("P")) {
+						tipo = TipoDeOperacion.PERMUTA;
 					}
 				}
 				System.out.println("Nombre de propietario:");
@@ -335,10 +353,13 @@ public class InterfazInmobiliaria {
 				
 				if(estaDisponible){
 					System.out.println("V----Venta\n"
-							+ "A----Alquiler");
+							+ "A----Alquiler \n"
+							+ "P----Permutar");
 					tipoLetra = teclado.next().toUpperCase();
 					if(tipoLetra.equals("A")) {
 						tipo = TipoDeOperacion.ALQUILER;
+					} else if(tipoLetra.equals("P")) {
+						tipo = TipoDeOperacion.PERMUTA;
 					}
 				}
 				System.out.println("Nombre de propietario:");
@@ -374,10 +395,13 @@ public class InterfazInmobiliaria {
 				teclado.nextLine();
 				if(estaDisponible){
 					System.out.println("V----Venta\n"
-							+ "A----Alquiler");
+							+ "A----Alquiler \n"
+							+ "P----Permutar");
 					tipoLetra = teclado.next().toUpperCase();
 					if(tipoLetra.equals("A")) {
 						tipo = TipoDeOperacion.ALQUILER;
+					} else if(tipoLetra.equals("P")) {
+						tipo = TipoDeOperacion.PERMUTA;
 					}
 				}
 				System.out.println("Nombre de propietario:");
@@ -407,10 +431,13 @@ public class InterfazInmobiliaria {
 				teclado.nextLine();
 				if(estaDisponible){
 					System.out.println("V----Venta\n"
-							+ "A----Alquiler");
+							+ "A----Alquiler \n"
+							+ "P----Permutar");
 					tipoLetra = teclado.next().toUpperCase();
 					if(tipoLetra.equals("A")) {
 						tipo = TipoDeOperacion.ALQUILER;
+					} else if(tipoLetra.equals("P")) {
+						tipo = TipoDeOperacion.PERMUTA;
 					}
 				}
 				System.out.println("Nombre de propietario:");
@@ -438,10 +465,13 @@ public class InterfazInmobiliaria {
 				teclado.nextLine();
 				if(estaDisponible){
 					System.out.println("V----Venta\n"
-							+ "A----Alquiler");
+							+ "A----Alquiler \n"
+							+ "P----Permutar");
 					tipoLetra = teclado.next().toUpperCase();
 					if(tipoLetra.equals("A")) {
 						tipo = TipoDeOperacion.ALQUILER;
+					} else if(tipoLetra.equals("P")) {
+						tipo = TipoDeOperacion.PERMUTA;
 					}
 				}
 				System.out.println("Nombre de propietario:");
@@ -473,7 +503,7 @@ public class InterfazInmobiliaria {
 	}
 	
 	private static void ordenadosPorPrecio(Scanner teclado) {
-		System.out.println(actual.ordenarPropiedadesPorPrecio().toString());
+		System.out.println(actual.ordenarPropiedadesPorPrecio(actual.mostrarPropiedades()).toString());
 		
 		
 	}
@@ -481,7 +511,7 @@ public class InterfazInmobiliaria {
 		System.out.println(actual.ordenarPropiedadesPorUbicacion().toString());
 		
 	}
-	private static void buscarPorRangoDePrecios(Scanner teclado) {
+	private static void buscarPorRangoDePrecios(Scanner teclado) throws SinResultadosException {
 		Double precioMaximo = 0.0;
 		Double precioMinimo = 0.0;
 		System.out.println("Precio maximo: ");
@@ -500,12 +530,12 @@ public class InterfazInmobiliaria {
 		System.out.println(actual.buscarPorUbicacion(ubicacionABuscar).toString());
 		
 	}
-	private static void venta(Scanner teclado) {
+	private static void venta(Scanner teclado) throws UmbralMinimoNoAlcanzadoException {
 		Integer opcion = 0;
 		String codigo;
 		Integer dni;
 		Propiedad propiedadVenta = null;
-		System.out.println("Que tipo de propiedad desea comprar? \n"
+		System.out.println("Que tipo de propiedad desea vender? \n"
 				+ "1. Casa\n"
 				+ "2. Departamento\n"
 				+ "3. PH\n"
@@ -549,17 +579,17 @@ public class InterfazInmobiliaria {
 		
 	}while(propiedadVenta == null);
 	if(propiedadVenta.estaDisponibleParaVenta()) { 
-		System.out.println("Ingrese su dni");
+		System.out.println("Ingrese el dni del cliente");
 		dni = teclado.nextInt();
 		Cliente interesado = actual.buscarCliente(dni);
 		if(interesado!= null) {
 			Venta nueva = new Venta(propiedadVenta, interesado.getNombre()+ " "+interesado.getApellido());
 			nueva.ejecutar();
 			actual.agregarVenta(nueva);
-			System.out.println("Usted ha comprado la siguiente propiedad: \n"
+			System.out.println("Propiedad vendida : \n"
 					+ propiedadVenta.toString());
 		} else {
-			System.out.println("Usted no es cliente nuestro");
+			System.out.println("el dni no esta registrado");
 		}
 	} else {
 		System.out.println("La propiedad no esta disponible para la venta");
@@ -614,16 +644,16 @@ public class InterfazInmobiliaria {
 		
 	}while(propiedadAlquiler == null);
 	if(propiedadAlquiler.estaDisponibleParaAlquiler()) {
-		System.out.println("Ingrese su dni");
+		System.out.println("Ingrese el dni del cliente");
 		dni = teclado.nextInt();
 		Cliente interesado = actual.buscarCliente(dni);
 		if(interesado!= null) {
 			Alquiler nuevo = new Alquiler(propiedadAlquiler, interesado.getNombre()+ " "+interesado.getApellido());
 			actual.agregarAlquiler(nuevo);
-			System.out.println("Usted ha alquilado la siguiente propiedad: \n"
+			System.out.println("Propiedad alquilada: \n"
 					+ propiedadAlquiler.toString());
 		} else {
-			System.out.println("Usted no es cliente nuestro");
+			System.out.println("El dni no esta registrado");
 		}
 	} else {
 		System.out.println("La propiedad no esta disponible para alquilar");
@@ -657,29 +687,33 @@ public class InterfazInmobiliaria {
 			propiedadA = actual.buscarCodigoPropiedad(codigoA);
 			if(propiedadA==null) {
 				System.out.println("Codigo incorrecto");
-			}
-			System.out.println("Ingrese el nombre del propietario B");
-			propietarioB = teclado.next();
-			ArrayList<Propiedad> propiedadesB = actual.getPropiedades(propietarioB);
-			if(propiedadesB==null) {
-				System.out.println("NO tiene ninguna propiedad a su nombre");
+			} else if(propiedadA.estaDisponibleParaPermuta()) {
+				System.out.println("La propiedad no esta disponible para permuta");
 			} else {
-				System.out.println("Usted es propietario de : "+ propiedadesB.toString());
-				System.out.println("Ingrese el codigo de la propiedad a permutar");
-				codigoB = teclado.next();
-				propiedadB = actual.buscarCodigoPropiedad(codigoB);
-				if(propiedadB==null) {
-					System.out.println("Codigo incorrecto");
-				}
-				Permuta nueva = new Permuta(propiedadA, propiedadB);
-				nueva.ejecutar();
-				actual.agregarPermuta(nueva);
-				System.out.println(nueva.toString());
-				
+				System.out.println("Ingrese el nombre del propietario B");
+				propietarioB = teclado.next();
+				ArrayList<Propiedad> propiedadesB = actual.getPropiedades(propietarioB);
+				if(propiedadesB==null) {
+					System.out.println("NO tiene ninguna propiedad a su nombre");
+				} else {
+					System.out.println("Usted es propietario de : "+ propiedadesB.toString());
+					System.out.println("Ingrese el codigo de la propiedad a permutar");
+					codigoB = teclado.next();
+					propiedadB = actual.buscarCodigoPropiedad(codigoB);
+					if(propiedadB==null) {
+						System.out.println("Codigo incorrecto");
+					}
+					Permuta nueva = new Permuta(propiedadA, propiedadB);
+					nueva.ejecutar();
+					actual.agregarPermuta(nueva);
+					System.out.println(nueva.toString());
+					
+			}
+			
+			
 		}
-		
-		
-	}
+			}
+			
 	}
 	
 

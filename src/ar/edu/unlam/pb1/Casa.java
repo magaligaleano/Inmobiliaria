@@ -22,6 +22,9 @@ public class Casa extends Propiedad {
 
 
 
+
+
+
 //	@Override
 //	public String getCodigo() {
 //		return codigo;

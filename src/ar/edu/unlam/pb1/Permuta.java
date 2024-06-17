@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb1;
 
-public class Permuta implements Operacion{
+public class Permuta implements Operacion, Comparable<Permuta>{
 	 private Propiedad propiedadA;
 	    private Propiedad propiedadB;
 
@@ -19,6 +19,29 @@ public class Permuta implements Operacion{
 		@Override
 		public String toString() {
 			return "Permuta [propiedadA=" + propiedadA + ", propiedadB=" + propiedadB + "]";
+		}
+
+		@Override
+		public int compareTo(Permuta o) {
+			return this.propiedadA.getCodigo().compareTo(o.propiedadA.getCodigo());
+			
+			
+		}
+
+		public Propiedad getPropiedadA() {
+			return propiedadA;
+		}
+
+		public void setPropiedadA(Propiedad propiedadA) {
+			this.propiedadA = propiedadA;
+		}
+
+		public Propiedad getPropiedadB() {
+			return propiedadB;
+		}
+
+		public void setPropiedadB(Propiedad propiedadB) {
+			this.propiedadB = propiedadB;
 		}
 
 		

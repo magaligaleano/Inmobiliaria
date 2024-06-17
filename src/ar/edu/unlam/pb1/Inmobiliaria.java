@@ -44,14 +44,27 @@ public class Inmobiliaria {
 			
 	}
 	
-	public Boolean agregarVenta(Venta nueva) {
+	public Boolean agregarVenta(Venta nueva) throws UmbralMinimoNoAlcanzadoException {
+		if(nueva.getPropiedad().getPrecio()<10000) {
+			throw new UmbralMinimoNoAlcanzadoException("El importe de la propiedad está por debajo del umbral mínimo de 10000.");
+		}
+		else if(nueva.getPropiedad().getTipo().equals(TipoDeOperacion.VENTA)) {
 		return ventas.add(nueva);
+		}
+		return false;
 	}
+	
 	public Boolean agregarAlquiler(Alquiler nuevo) {
-		return alquileres.add(nuevo);
+		if(nuevo.propiedad.getTipo().equals(TipoDeOperacion.ALQUILER)) {
+			return alquileres.add(nuevo);
+		}
+		return false;
 	}
 	public Boolean agregarPermuta(Permuta nueva) {
-		return permutas.add(nueva);
+		if(nueva.getPropiedadA().getTipo().equals(TipoDeOperacion.PERMUTA)) {
+			return permutas.add(nueva);
+		}
+		return false;
 	}
 
 			
@@ -173,7 +186,7 @@ public class Inmobiliaria {
 
 	//ordenar propiedades por precio
 	
-	public ArrayList<Propiedad> ordenarPropiedadesPorPrecio() {
+	public ArrayList<Propiedad> ordenarPropiedadesPorPrecio(ArrayList<Propiedad> propiedades) {
 		Collections.sort(propiedades, new OrdenadosPorPrecio());
 		return propiedades;
 		
@@ -189,13 +202,16 @@ public class Inmobiliaria {
 	
 	//buscar por rango de precios
 	
-	public ArrayList<Propiedad> buscarPorRangoDePrecio(Double precioMinimo, Double precioMaximo) {
+	public ArrayList<Propiedad> buscarPorRangoDePrecio(Double precioMinimo, Double precioMaximo) throws SinResultadosException {
 		ArrayList <Propiedad> propiedadesEncontradas = new ArrayList<>();
 			for(Propiedad actual : propiedades) {
 				if(actual.getPrecio()>=precioMinimo && actual.getPrecio()<=precioMaximo) { 
 					propiedadesEncontradas.add(actual);
 				}
 			}
+			if (propiedadesEncontradas.isEmpty()) {
+	            throw new SinResultadosException("No se encontraron propiedades en el rango de precio especificado.");
+	        }
 	   return propiedadesEncontradas;
 		
 	}
