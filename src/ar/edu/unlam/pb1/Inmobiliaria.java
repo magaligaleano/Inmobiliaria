@@ -36,11 +36,11 @@ public class Inmobiliaria {
 	}	
 		
 	public Boolean agregarCliente(Cliente nuevo) {
-		for(Cliente cliente: clientes) {
-			  if (cliente.getDni().equals(nuevo.getDni())) {
-	                return false;
-	            }
-	        }
+//		for(Cliente cliente: clientes) {
+//			  if (cliente.getDni().equals(nuevo.getDni())) {
+//	                return false;
+//	            }
+//	        }
 		return clientes.add(nuevo);		
 			
 	}
